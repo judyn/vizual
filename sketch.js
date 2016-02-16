@@ -36,7 +36,7 @@ function mousePressed() {
  
   
 		textAlign(CENTER);
-		text('Pause',width/2, height/2);
+		text("Pause",width/2, height/2);
     song.play(); // playback will resume from the pause position
   }
   
@@ -45,12 +45,11 @@ ellipse(mouseX,mouseY,20+rms*400, 20+rms*400);
 }
 
 
-
 function draw() {
   background(255);
   var spectrum = fft.analyze(); 
     v1++;
-  if(v1 > 360){
+  if(v1 > 100){
   v1 = 0;
   }
   v2++;
@@ -71,14 +70,23 @@ function draw() {
   ellipse(mouseX,mouseY,20+rms*400, 20+rms*400);
   noStroke();
     
-  fill(spectrum);
+
   
-   for (var i = 0; i< spectrum.length; i++){
+   /*for (var i = 0; i< spectrum.length; i++){
     var x = map(i, 0, spectrum.length, 0, width);
     var h = -height + map(spectrum[i], 0, width+5, height, 0);
     ellipse(x, height/2, width/2 / spectrum.length, h );
+    rect(x, height/2, width/2 / spectrum.length, h );
    
-  }
+  }*/
+    for (var i = 0; i < spectrum.length/20; i++) {
+    fill(spectrum[rms]/2, spectrum[rms]/10, 0);
+    var x = map(i, 0, spectrum.length/25, 0, width);
+    var h = map(spectrum[i], 0, 255, 0, height);
+    rect(x, height, spectrum.length/25, -h);
+   
+    }
+      fill(spectrum);
   
 }
 
