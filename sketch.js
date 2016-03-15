@@ -82,7 +82,7 @@ function draw() {
     for (var i = 0; i < spectrum.length/20; i++) {
     fill(spectrum[rms]/2, spectrum[rms]/10, 0);
     var x = map(i, 0, spectrum.length/25, 0, width);
-    var h = map(spectrum[i], 0, 255, 0, height);
+    var h = map(spectrum[i], 0, 255, 0, height/2);
     rect(x, height, spectrum.length/25, -h);
    
     }
