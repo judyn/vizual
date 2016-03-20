@@ -78,21 +78,16 @@ function draw() {
   // Get the average (root mean square) amplitude
   var rms = analyzer.getLevel();
 
-  // Draw an ellipse with size based on volume
+  // Draw shapes with size based on volume
   ellipse(width/2,height/2,100+rms*400, 100+rms*400);
-  /*rect(width/2,height/2,100+rms*400, 100+rms*400);*/
+  rect(width/3,height/3,100+rms*400, 100+rms*400);
+  triangle(30+rms, 75+rms, 58+rms*400, 20+rms*400, 86+rms*400, 75+rms*400);
+    
+
   ellipse(mouseX,mouseY,20+rms*400, 20+rms*400);
   noStroke();
     
-   /*for (var i = 0; i< spectrum.length; i++){
-    var x = map(i, 0, spectrum.length, 0, width);
-    var h = -height + map(spectrum[i], 0, width+5, height, 0);
-    ellipse(x, height/2, width/2 / spectrum.length, h );
-    rect(x, height/2, width/2 / spectrum.length, h );
-   
-  }*/
-  
-    waveForm();
+  waveForm();
   
 }
 
