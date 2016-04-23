@@ -1,17 +1,40 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Untitled</title>
-     <link href="styles.css" type="text/css" rel="stylesheet">
-    <script src="libraries/p5.play.js" type="text/javascript"></script>
-      <script src="libraries/p5.js" type="text/javascript"></script>
-    <script src="libraries/p5.dom.js" type="text/javascript"></script>
-    <script src="libraries/p5.sound.js" type="text/javascript"></script>
-    <script src="sketch.js" type="text/javascript"></script>
-     
-  </head>
-  <body>
-  
-  </body>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Untitled</title>
+	<link href="styles.css" type="text/css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<style>
+		.audio-player {
+			min-height: 100px;
+			background: gray;
+			color: white;
+			padding-top: 1em;
+			position:absolute;
+			bottom:-24px;
+			width:100%;
+		}
+		
+		.media-controls i {font-size:90px; cursor:pointer;}
+	</style>
+</head>
+
+<body>
+	
+	<!--<div class="audio-player">
+
+		<div class="media-controls">
+		<i class="material-icons" id="btn-play">play_arrow</i>
+		<i class="material-icons" id="btn-pause">pause</i>
+		</div>
+	</div>-->
+	
+	<script src="libraries/p5.js" type="text/javascript"></script>
+	<script src="libraries/p5.dom.js" type="text/javascript"></script>
+	<script src="libraries/p5.sound.js" type="text/javascript"></script>
+	<script src="sketch.js" type="text/javascript"></script>
+</body>
+
 </html>
