@@ -8,7 +8,8 @@ var vizType = 0;
 	fft = new p5.FFT();
 var rms = analyzer.getLevel();
 var osc;
- var spectrum = fft.analyze(); 
+var spectrum = fft.analyze(); 
+var bgColor = 255;
 
 function preload(){
 	song = loadSound('Chrome Sparks - All There Is (Feat. Steffaloo).mp3');
@@ -16,12 +17,13 @@ function preload(){
 
 var canvas;
 function setup(){
-    canvas = createCanvas(windowWidth - 500, windowHeight);
+	
+    canvas = createCanvas(windowWidth - 20, windowHeight - 20);
     canvas.parent('easel');
     
 
 	colorMode(HSB,100);
-    frameRate(60);
+    frameRate(30);
     
     //analyzer bars
 	analyzer = new p5.Amplitude();
@@ -31,11 +33,11 @@ function setup(){
     //waveform oscillator
     osc = new p5.SinOsc(); // set frequency and type
 	osc.amp(.5);
-	
+	smooth();
 }
 
 function windowResized() {
-  resizeCanvas(windowWidth - 500, windowHeight);
+  resizeCanvas(windowWidth, windowHeight);
 }
 
 function mediaControls(){
@@ -64,7 +66,7 @@ function analyzerBars(){
      var rms = analyzer.getLevel();
     
     for (var i = 0; i < spectrum.length/20; i++) {
-   fill(spectrum[rms]/2, spectrum[rms]/10, 0);
+   /*fill(spectrum[rms]/2, spectrum[rms]/10, 0);*/
     var x = map(i, 0, spectrum.length/25, 0, width);
     var h = map(spectrum[i], 0, 255, 0, height/2);
     rect(x, height, spectrum.length/25, -h);
@@ -72,24 +74,25 @@ function analyzerBars(){
     }
     fill(spectrum);
     noStroke();
+	
+	
 }
 
-
-function draw() {
-    
+function draw(){
+    background(bgColor);
     if (vizType==0)
     {
-        background(255);
+       
         analyzerBars();
     }
     else if (vizType==1)
     {
-        background(255);
+      
         waveFormCanvas();
     }
     else if (vizType==2)
     {
-        background(255);
+       
         circleCanvas();
     }
     else if (vizType==3)
@@ -98,12 +101,12 @@ function draw() {
     }    
     else if (vizType==4)
     {   
-        background(255); 
+       
         squareCanvas();
     }
     else
     {  
-        background(255); 
+       
     } 
   
     mediaControls();
@@ -133,26 +136,42 @@ function draw() {
     ellipse(mouseX,mouseY,20+rms*400, 20+rms*400);
     noStroke();
 */  
+	
+	
+}
+
+
+function keyTyped(){
+	if (key === 'd'){
+		bgColor = 0;
+		
+	}
+	
+	if (key === 'f') {
+		
+		bgColor = 255;
+	}
+	
 }
 
 
 function waveFormCanvas(){
     
     var spectrum = fft.analyze(); 
-    smooth();
+  
     var waveform = fft.waveform(); // analyze the waveform
 	beginShape();
     stroke(spectrum);
-	strokeWeight(2);
+	strokeWeight(4);
+	noFill();
 	
     for (var i = 0; i < waveform.length; i++) {
-		var x = map(i, 0, waveform.length, 0, width);
+		var x = map(i, 0, waveform.length/5*PI, 0, width);
 		var y = map(waveform[i], -1, 1, height, 0);
 		vertex(x, y);
 	}
-	endShape();
-   
-    
+   endShape();
+   smooth();
 
 	// change oscillator frequency based on amplitude
 /*	var freq = map(rms, 0, width, 40, 500);
