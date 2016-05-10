@@ -15,7 +15,7 @@ a {
 a:hover {
 	text-decoration: underline;
 	transition: .3s;
-	color: rgba(84, 77, 77, 0.44)
+	color: rgba(84, 77, 77, 0.44);
 }
 
 canvas {
@@ -43,6 +43,13 @@ div.audio-player > div > h2 {
 .media-controls {
 	text-align: right;
 	padding: 1em;
+
+}
+
+.media-controls:hover {
+	transition: .3s;
+	color: rgba(193, 193, 193, 0.4);
+	
 }
 
 .media-controls i {
@@ -50,6 +57,14 @@ div.audio-player > div > h2 {
 	cursor: pointer;
 	color: rgba(193, 193, 193, 0.4);
 	vertical-align:middle;
+	
+}
+
+.media-controls i:hover{
+	transition: .3s;
+	color: rgba(84, 77, 77, 0.44);
+	
+	
 }
 
 .media-controls i::after {
